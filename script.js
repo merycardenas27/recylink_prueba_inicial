@@ -51,6 +51,15 @@ const GetUniqueNumbers = (list1, list2) => {
 }
 
 // VIEW FUNCTIONS
+// Get function menu buttons
+const btns = document.getElementsByTagName("button");
+const result = document.getElementById("result");
+
+// Set click event for all function menu buttons
+for (let index = 0; index < btns.length; index++) {
+  btns[index].addEventListener('click', (event) => Recylink(event.target.id));
+}
+
 const Recylink = (option) => {
   let output;
 
@@ -104,13 +113,6 @@ const Recylink = (option) => {
       break;
   }
 
+  result.textContent = output
   return console.log(output);
 };
-
-// Get function menu buttons
-const btns = document.getElementsByTagName("button");
-
-// Set click event for all function menu buttons
-for (let index = 0; index < btns.length; index++) {
-btns[index].addEventListener('click', (event) => Recylink(event.target.id));
-}
