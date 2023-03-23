@@ -49,3 +49,68 @@ const GetUniqueNumbers = (list1, list2) => {
 
   return intersections;
 }
+
+// VIEW FUNCTIONS
+const Recylink = (option) => {
+  let output;
+
+  switch (option) {
+    case 'composite_function':
+      confirm("Ingresa 3 números enteros");
+
+      let num1 = prompt("Ingresa el primer número");
+      let num2 = prompt("Ingresa el segundo número");
+      let num3 = prompt("Ingresa el tercer número");
+
+      output = GenerateCompositeNumber(num1, num2, num3);
+      break;
+    case 'longest_string':
+      confirm("Ingresa una lista de palabras");
+
+      let list = prompt("Ejemplo: best,company,ever")?.split(',');
+
+      output = GetLongestString(list);
+      break;
+    case 'string_repetition':
+      confirm("Ingresa una palabra y el número de veces que se repetirá.");
+
+      let word = prompt("Ingresa una palabra");
+      let repeater = prompt("Ingresa el número que se repetirá la palabra");
+
+      output = GenerateStringRepetition(word, repeater);
+      break;
+    case 'only_lastnames':
+      const contacts = [
+        { firstName: 'Juanito', lastName: 'Recy' },
+        { firstName: 'James', lastName: 'Link' },
+        { firstName: 'Harry', lastName: 'Potter' }
+      ];
+
+      output = GetOnlyLastNames(contacts);
+      break;
+    case 'unique_numbers':
+      confirm("Ingresa 2 listas de números enteros");
+
+      let list1 = prompt("Ingresa la primera lista. Ejemplo: 1,2,5")
+        .split(',')
+        .map(item => parseInt(item, 10)); 
+      let list2 = prompt("Ingresa la segunda lista. Ejemplo: 2,1,6")?.split(',')
+        .split(',')
+        .map(item => parseInt(item, 10)); 
+
+      output = GetUniqueNumbers(list1, list2);
+      break;
+    default:
+      break;
+  }
+
+  return console.log(output);
+};
+
+// Get function menu buttons
+const btns = document.getElementsByTagName("button");
+
+// Set click event for all function menu buttons
+for (let index = 0; index < btns.length; index++) {
+btns[index].addEventListener('click', (event) => Recylink(event.target.id));
+}
